@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>
+            shortlinker
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Fill up the form below</h1>
+  <div class="container">
+        {% if short_code != "" %}
+            <h3> Your Link is <a href = "http://127.0.0.1:8000/l/{{short_code}}"> http://127.0.0.1:8000/l/{{short_code}} </a></h3>
+        {% endif %}
+   <form method = "POST">
+    {{form}}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Submit" />
+   </form>
+    </body>
+</html>
