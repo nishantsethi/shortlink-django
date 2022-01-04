@@ -3,5 +3,5 @@ from django import forms
 
 
 class UrlInput(forms.Form):
-    long_url = forms.URLField(widget=forms.TextInput(attrs={'placeholder': "Paste your long link here"}))
+    long_url = forms.URLField(label='Long Url',widget=forms.TextInput(attrs={'placeholder': "Paste your long link here"}))
     

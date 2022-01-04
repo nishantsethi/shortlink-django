@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from . import forms
 import random
 import string
+import re
 
 
 
@@ -36,10 +37,17 @@ def index(request):
 
 def redirector(request, uri):
 
+    def formaturl(url):
+        if not re.match('(?:http|https)://', url):
+            return 'http://{}'.format(url)
+        return url
+
     try:
         url = Urls.objects.get(short_url=uri)
 
-        long_url = url.long_url
+        long_url = formaturl(url.long_url)
+
+
 
         return redirect(long_url)
 
