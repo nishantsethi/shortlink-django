@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+
+<head>
+    <title>
+        shortlinker
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'base/main.css' %}">
+    <style>
+        .navbar-footer {
+            float: center;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .navbar-footer-brand {
+            float: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #effa5b;">
+        <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <a class="mr-sm-2"> Download the architecture document with db models and system design here:  </a>
+            <button class="btn btn-outline-success mr-sm-2" type="submit">Architecture Doc</button>
+        </div>
+    </nav>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark center">
+            <div class='mx-auto my-2 order-0 order-md-1 position-relative'>
+                <a class="navbar-brand center py-0" align='center' href="/">ShortLink</a>
+
+
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    <!-- <a class="nav-item nav-link" href="/About">About</a> -->
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <main role="main" class="container" align='center'>
+        <div class="container">
+            {% if short_code != "" %}
+            <div class="alert alert-success">
+                Your Link is <a href="http://127.0.0.1:8000/l/{{short_code}}" target="_blank"> http://127.0.0.1:8000/l/{{short_code}} </a>
+            </div>
+            {% endif %} {% if form.errors %}
+            <div class="alert alert-danger">
+                The link entered is invalid
+            </div>
+            {% endif %}
+            <div class="content-section">
+                <form method="POST">
+                    <fieldset class="form-group">
+                        <div class="form-group">
+
+
+
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <h2>Enter URL Below </h2>
+                                <br /> {{ form.long_url }}
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <footer class="fixed-bottom">
+        <nav class="navbar navbar-dark bg-dark" role="navigation">
+            <div class="navbar-footer">
+                <div class="col-md-3 offset-md-3">
+                    <a class="navbar-footer-brand " href="https://nishantsethi.com">© Copyright 2022 | Made with ❤️ in India | I suck at design</a>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
