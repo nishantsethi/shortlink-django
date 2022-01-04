@@ -19,7 +19,6 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('base.urls')),
 
 ]
